@@ -27,11 +27,10 @@ const VIEW_LABELS = {
   blog: 'Chronicle · Recent Entries',
   about: 'The Wanderer · About',
   shrine: 'Shrine · Pirotess of Marmo',
+  guestbook: 'Guestbook · Sign the Scroll',
 };
 
-let lightTheme = false;
 
-const root = document.getElementById('rootEl');
 const swordCursor = document.getElementById('swordCursor');
 
 let cursorAngle = -Math.PI / 2;
@@ -206,9 +205,13 @@ function tickClock() {
   if (!clock) return;
 
   const now = new Date();
-  clock.textContent = [now.getHours(), now.getMinutes(), now.getSeconds()]
-    .map((value) => String(value).padStart(2, '0'))
-    .join(':');
+  const hours24 = now.getHours();
+  const hours12 = hours24 % 12 || 12;
+  const meridiem = hours24 >= 12 ? 'pm' : 'am';
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const seconds = String(now.getSeconds()).padStart(2, '0');
+
+  clock.textContent = `${String(hours12).padStart(2, '0')}:${minutes}:${seconds} ${meridiem}`;
 }
 
 function showView(id, link) {
@@ -219,21 +222,22 @@ function showView(id, link) {
   const label = document.getElementById('clabel');
   if (label && VIEW_LABELS[id]) label.textContent = VIEW_LABELS[id];
 
-  document.querySelectorAll('.nav-links a, .nav-bar a').forEach((anchor) => {
+  document.querySelectorAll('.nav-links a, .nav-bar a, .guestbook-link').forEach((anchor) => {
     anchor.classList.remove('active');
   });
 
-  if (link) link.classList.add('active');
-}
+  if (link) {
+    link.classList.add('active');
+  }
 
-function toggleTheme() {
-  if (!root) return;
-  lightTheme = !lightTheme;
-  root.style.color = lightTheme ? '#c8a84a' : '#b0a080';
+  document.querySelectorAll(`[data-view="${id}"]`).forEach((anchor) => {
+    if (anchor.matches('.nav-links a, .nav-bar a')) {
+      anchor.classList.add('active');
+    }
+  });
 
-  const spaceBg = document.getElementById('spaceBg');
-  if (spaceBg) {
-    spaceBg.style.filter = lightTheme ? 'brightness(1.2) saturate(0.85)' : 'none';
+  if (id === 'guestbook' && window.loadGuestbook) {
+    window.loadGuestbook();
   }
 }
 
@@ -245,11 +249,6 @@ function bindNavigation() {
       showView(viewLink.dataset.view, viewLink);
     }
   });
-
-  const themeToggle = document.getElementById('theme-toggle');
-  if (themeToggle) {
-    themeToggle.addEventListener('click', toggleTheme);
-  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {

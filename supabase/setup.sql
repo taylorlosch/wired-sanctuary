@@ -108,3 +108,31 @@ end;
 $$;
 
 grant execute on function public.increment_visitor_count() to anon, authenticated;
+
+-- Guestbook
+create table if not exists public.guestbook_entries (
+  id uuid primary key default gen_random_uuid(),
+  name text not null,
+  location text not null default '',
+  website text not null default '',
+  message text not null,
+  created_at timestamptz not null default now()
+);
+
+alter table public.guestbook_entries enable row level security;
+
+create policy "Public can read guestbook entries"
+on public.guestbook_entries
+for select
+using (true);
+
+create policy "Public can sign guestbook"
+on public.guestbook_entries
+for insert
+to anon, authenticated
+with check (
+  char_length(trim(name)) between 1 and 40
+  and char_length(trim(message)) between 1 and 500
+  and char_length(location) <= 60
+  and char_length(website) <= 200
+);

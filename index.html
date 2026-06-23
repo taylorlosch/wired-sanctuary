@@ -57,7 +57,7 @@
         <a href="#" data-view="about">the wanderer</a>
         <a href="#" data-view="shrine">shrine</a>
         <a href="#">gallery</a>
-        <a href="#">guestbook</a>
+        <a href="#" data-view="guestbook">guestbook</a>
         <a href="#">links</a>
       </div>
 
@@ -72,7 +72,7 @@
                 <li><a href="#" data-view="about">the wanderer</a></li>
                 <li><a href="#" data-view="shrine">shrine</a></li>
                 <li><a href="#">gallery</a></li>
-                <li><a href="#">guestbook</a></li>
+                <li><a href="#" data-view="guestbook">guestbook</a></li>
                 <li><a href="#">links</a></li>
                 <li><a href="#">resources</a></li>
               </ul>
@@ -227,6 +227,44 @@
                 </div>
               </div>
             </div>
+
+            <div class="view" id="v-guestbook">
+              <div class="scroll-heading">Guestbook · Sign the Scroll</div>
+              <p class="prose gb-intro">
+                <em>Leave thy mark upon the gate.</em> This guestbook has been open since the old web — signatures are kept in the archive for all travellers who pass through.
+              </p>
+              <p class="gb-count" id="guestbook-count">unrolling the scroll…</p>
+              <p class="gb-status" id="guestbook-status"></p>
+
+              <form class="gb-form" id="guestbook-form">
+                <fieldset class="gb-fieldset">
+                  <legend>✦ sign here ✦</legend>
+                  <label class="gb-label">
+                    name
+                    <input class="gb-input" type="text" name="name" maxlength="40" required placeholder="how shall the scroll remember you?">
+                  </label>
+                  <label class="gb-label">
+                    where from
+                    <input class="gb-input" type="text" name="location" maxlength="60" placeholder="realm, city, layer…">
+                  </label>
+                  <label class="gb-label">
+                    homepage
+                    <input class="gb-input" type="text" name="website" maxlength="200" placeholder="http://your-site (optional)">
+                  </label>
+                  <label class="gb-label">
+                    message
+                    <textarea class="gb-textarea" name="message" maxlength="500" rows="5" required placeholder="speak freely, traveller…"></textarea>
+                  </label>
+                  <button class="gb-submit" type="submit">✦ leave thy mark ✦</button>
+                  <p class="gb-form-status" id="guestbook-form-status"></p>
+                </fieldset>
+              </form>
+
+              <div class="divider">— ✦ signatures ✦ —</div>
+              <div class="gb-entries" id="guestbook-entries">
+                <p class="prose">unrolling the scroll…</p>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -257,9 +295,14 @@
           </div>
 
           <div class="sb">
-            <div class="sb-title">Style</div>
+            <div class="sb-title">Guestbook</div>
             <div class="sb-body">
-              <button class="theme-btn" id="theme-toggle" type="button">switch theme</button>
+              <a href="#" class="guestbook-link" data-view="guestbook">
+                <span class="guestbook-link__inner">
+                  <span class="guestbook-link__line">✦ sign the ✦</span>
+                  <span class="guestbook-link__line">guestbook</span>
+                </span>
+              </a>
             </div>
           </div>
 
@@ -274,14 +317,22 @@
             </div>
           </div>
 
-          <a href="#" class="guestbook-link">✦ sign the guestbook ✦</a>
-
           <div class="sb">
             <div class="sb-title">Buttons</div>
             <div class="sb-body">
               <div class="link-btns">
-                <a href="#" class="lbtn" data-view="blog">the chronicle</a>
-                <a href="#" class="lbtn">✦ lodoss ✦</a>
+                <a href="#" class="btn-88" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/images/buttons/button-1.gif" alt="button 1" width="88" height="31">
+                </a>
+                <a href="#" class="btn-88" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/images/buttons/button-2.gif" alt="button 2" width="88" height="31">
+                </a>
+                <a href="#" class="btn-88" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/images/buttons/button-3.gif" alt="button 3" width="88" height="31">
+                </a>
+                <a href="#" class="btn-88" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/images/buttons/button-4.gif" alt="button 4" width="88" height="31">
+                </a>
               </div>
             </div>
           </div>
@@ -329,6 +380,7 @@
   <script src="js/space-bg.js"></script>
   <script src="js/player.js"></script>
   <script src="js/counter.js"></script>
+  <script src="js/guestbook.js"></script>
   <script src="js/app.js" defer></script>
 </body>
 </html>
