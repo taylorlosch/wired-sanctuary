@@ -38,8 +38,6 @@ let cursorAngle = -Math.PI / 2;
 let displayAngle = -Math.PI / 2;
 let targetX = 0;
 let targetY = 0;
-let displayX = 0;
-let displayY = 0;
 let lastCursorX = 0;
 let lastCursorY = 0;
 let cursorVisible = false;
@@ -53,22 +51,34 @@ function lerpAngle(from, to, amount) {
   return from + delta * amount;
 }
 
+function angleDelta(from, to) {
+  let delta = to - from;
+  while (delta > Math.PI) delta -= Math.PI * 2;
+  while (delta < -Math.PI) delta += Math.PI * 2;
+  return Math.abs(delta);
+}
+
 function renderSwordCursor() {
-  displayX += (targetX - displayX) * 0.22;
-  displayY += (targetY - displayY) * 0.22;
-  displayAngle = lerpAngle(displayAngle, cursorAngle, 0.14);
+  if (angleDelta(displayAngle, cursorAngle) > 0.002) {
+    displayAngle = lerpAngle(displayAngle, cursorAngle, 0.42);
+  } else {
+    displayAngle = cursorAngle;
+  }
 
   swordCursor.style.transform =
-    `translate3d(${displayX}px, ${displayY}px, 0) rotate(${displayAngle}rad)`;
+    `translate3d(${targetX}px, ${targetY}px, 0) rotate(${displayAngle}rad)`;
 
-  if (cursorVisible) {
+  if (cursorVisible && angleDelta(displayAngle, cursorAngle) > 0.002) {
     cursorFrame = requestAnimationFrame(renderSwordCursor);
   } else {
     cursorFrame = null;
   }
 }
 
-function startSwordCursorLoop() {
+function updateSwordCursor() {
+  swordCursor.style.transform =
+    `translate3d(${targetX}px, ${targetY}px, 0) rotate(${displayAngle}rad)`;
+
   if (!cursorFrame) {
     cursorFrame = requestAnimationFrame(renderSwordCursor);
   }
@@ -154,13 +164,12 @@ function initSwordCursor() {
     const dy = event.clientY - lastCursorY;
     const speed = Math.hypot(dx, dy);
 
-    if (speed > 3) {
+    if (speed > 4) {
       cursorAngle = Math.atan2(dy, dx) + Math.PI / 2;
     }
 
     if (!cursorHasMoved) {
-      displayX = event.clientX;
-      displayY = event.clientY;
+      displayAngle = cursorAngle;
       cursorHasMoved = true;
     }
 
@@ -170,11 +179,12 @@ function initSwordCursor() {
     lastCursorY = event.clientY;
     cursorVisible = true;
     swordCursor.style.opacity = '1';
-    startSwordCursorLoop();
+    updateSwordCursor();
   });
 
   document.addEventListener('mouseleave', () => {
     cursorVisible = false;
+    cursorFrame = null;
     swordCursor.style.opacity = '0';
   });
 
@@ -182,7 +192,7 @@ function initSwordCursor() {
     if (cursorHasMoved) {
       cursorVisible = true;
       swordCursor.style.opacity = '1';
-      startSwordCursorLoop();
+      updateSwordCursor();
     }
   });
 }

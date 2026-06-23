@@ -144,7 +144,7 @@
                   <div class="about-col-title">The Wanderer</div>
                   <div class="about-row"><b>name ·</b> called ashara here</div>
                   <div class="about-row"><b>age ·</b> unknown</div>
-                  <div class="about-row"><b>sign ·</b> scorpio ♏</div>
+                  <div class="about-row"><b>sign ·</b> pisces ♓</div>
                   <div class="about-row"><b>realm ·</b> somewhere cold</div>
                   <div class="about-row"><b>navi ·</b> always on</div>
                 </div>
@@ -233,13 +233,26 @@
         <div class="right-col">
           <div class="np-box">
             <div class="np-label">♪ now playing</div>
-            <span class="np-song">Adesso e Fortuna — Record of Lodoss War OST</span>
-            <div class="np-bar"><div class="np-fill"></div></div>
+            <div class="np-controls">
+              <button class="np-btn" id="np-play" type="button" aria-label="Play" disabled>▶</button>
+              <div class="np-track">
+                <span class="np-song" id="np-song-title">Adesso e Fortuna — Record of Lodoss War OST</span>
+                <div class="np-bar" id="np-bar" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="100">
+                  <div class="np-fill" id="np-fill"></div>
+                </div>
+                <div class="np-time">
+                  <span id="np-elapsed">0:00</span>
+                  <span id="np-duration">0:00</span>
+                </div>
+                <p class="np-status" id="np-status" hidden>drop mp3 in assets/audio/</p>
+              </div>
+            </div>
+            <audio id="np-audio" preload="metadata"></audio>
           </div>
 
           <div class="counter-box">
             travellers received
-            <span class="counter-digits">007741</span>
+            <span class="counter-digits" id="visitor-counter">------</span>
             since the gate opened
           </div>
 
@@ -314,6 +327,8 @@
 
   <script src="js/supabase-config.js"></script>
   <script src="js/space-bg.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/counter.js"></script>
   <script src="js/app.js" defer></script>
 </body>
 </html>
