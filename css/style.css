@@ -1,0 +1,29 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  line-height: 1.6;
+  color: #e8e8e8;
+  background: #0f0f12;
+}
+
+header,
+main,
+footer {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+header h1 {
+  margin: 0 0 0.25rem;
+}
+
+#posts {
+  min-height: 200px;
+}

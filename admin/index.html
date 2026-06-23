@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Wired Sanctuary</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Admin Dashboard</h1>
+    <p>The secret dashboard where you will log in and post</p>
+  </header>
+
+  <main>
+    <section id="login">
+      <h2>Log in</h2>
+      <form id="login-form">
+        <label>
+          Username
+          <input type="text" name="username" required>
+        </label>
+        <label>
+          Password
+          <input type="password" name="password" required>
+        </label>
+        <button type="submit">Log in</button>
+      </form>
+    </section>
+
+    <section id="editor" hidden>
+      <h2>New post</h2>
+      <form id="post-form">
+        <label>
+          Title
+          <input type="text" name="title" required>
+        </label>
+        <label>
+          Content
+          <textarea name="content" rows="8" required></textarea>
+        </label>
+        <button type="submit">Publish</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="../js/app.js"></script>
+</body>
+</html>
