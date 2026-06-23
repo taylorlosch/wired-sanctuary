@@ -3,47 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin — Wired Sanctuary</title>
+  <title>Admin · The Lodoss Chronicle</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
-  <header>
-    <h1>Admin Dashboard</h1>
-    <p>The secret dashboard where you will log in and post</p>
-  </header>
+<body class="admin-root">
+  <div class="admin-shell">
+    <a class="admin-back" href="../index.html">← return to the sanctuary</a>
 
-  <main>
+    <div class="panel">
+      <div class="panel-title">Secret Chronicle Desk</div>
+      <div class="panel-body">
+        <p class="lore-text">Log in here to publish new entries to the Chronicle tab.</p>
+        <p class="admin-status" id="admin-status">Awaiting credentials…</p>
+      </div>
+    </div>
+
     <section id="login">
-      <h2>Log in</h2>
-      <form id="login-form">
-        <label>
-          Username
-          <input type="text" name="username" required>
-        </label>
-        <label>
-          Password
-          <input type="password" name="password" required>
-        </label>
-        <button type="submit">Log in</button>
-      </form>
+      <div class="panel">
+        <div class="panel-title">Gate Entry</div>
+        <div class="panel-body">
+          <form class="admin-form" id="login-form">
+            <label>
+              Email
+              <input type="email" name="email" autocomplete="username" required>
+            </label>
+            <label>
+              Password
+              <input type="password" name="password" autocomplete="current-password" required>
+            </label>
+            <button type="submit">Enter the admin layer</button>
+          </form>
+        </div>
+      </div>
     </section>
 
     <section id="editor" hidden>
-      <h2>New post</h2>
-      <form id="post-form">
-        <label>
-          Title
-          <input type="text" name="title" required>
-        </label>
-        <label>
-          Content
-          <textarea name="content" rows="8" required></textarea>
-        </label>
-        <button type="submit">Publish</button>
-      </form>
+      <div class="panel">
+        <div class="panel-title">New Chronicle Entry</div>
+        <div class="panel-body">
+          <form class="admin-form" id="post-form">
+            <label>
+              Title
+              <input type="text" name="title" required>
+            </label>
+            <label>
+              Meta line
+              <input type="text" name="meta_line" id="meta-line" placeholder="saturday · march 20 · the third watch">
+            </label>
+            <label>
+              Illumination (image)
+              <input type="file" name="image" accept="image/*">
+            </label>
+            <label>
+              Prose
+              <textarea name="body" rows="10" required placeholder="Write in HTML if you want emphasis, like &lt;em&gt;this&lt;/em&gt;."></textarea>
+            </label>
+            <div class="admin-actions">
+              <button type="submit">Publish to chronicle</button>
+              <button class="admin-secondary" type="button" id="logout-button">Log out</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </section>
-  </main>
+  </div>
 
-  <script src="../js/app.js"></script>
+  <script src="../js/supabase-config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/admin.js"></script>
 </body>
 </html>

@@ -3,25 +3,317 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wired Sanctuary</title>
+  <title>The Lodoss Chronicle</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header>
-    <h1>Wired Sanctuary</h1>
-    <p>Your main home / landing page mockup</p>
-  </header>
+  <div class="space-bg" id="spaceBg" aria-hidden="true">
+    <canvas id="spaceCanvas"></canvas>
+    <div class="space-moon" aria-hidden="true"></div>
+    <div class="space-dust" aria-hidden="true"></div>
+  </div>
 
-  <main>
-    <section id="posts">
-      <!-- Blog posts will appear here -->
-    </section>
-  </main>
+  <h2 class="sr-only">Record of Lodoss War fantasy-inspired personal website with three-column layout, illuminated manuscript aesthetic, and swappable center content panel</h2>
 
-  <footer>
-    <p>&copy; Wired Sanctuary</p>
-  </footer>
+  <div class="root" id="rootEl">
+    <div class="page">
+      <div class="site-header">
+        <div class="header-ornament"></div>
+        <div class="header-side">
+          <svg viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <polygon points="27,4 31,22 50,22 36,33 41,50 27,40 13,50 18,33 4,22 23,22" fill="none" stroke="#2a1e08" stroke-width="1.5"/>
+            <polygon points="27,10 30,21 42,21 33,28 36,40 27,33 18,40 21,28 12,21 24,21" fill="none" stroke="#1e1408" stroke-width="0.8"/>
+            <circle cx="27" cy="27" r="6" fill="none" stroke="#3d2800" stroke-width="1"/>
+            <circle cx="27" cy="27" r="2" fill="#3d2800"/>
+            <line x1="27" y1="10" x2="27" y2="44" stroke="#1a1006" stroke-width="0.5"/>
+            <line x1="10" y1="27" x2="44" y2="27" stroke="#1a1006" stroke-width="0.5"/>
+          </svg>
+          <div class="header-time" id="hclock">00:00:00</div>
+        </div>
+        <div class="header-center">
+          <div class="rune-row">✦ ᚱ ᚢ ᚾ ᛖ ✦</div>
+          <div class="site-title">The Lodoss Chronicle</div>
+          <div class="rune-row">✦ ᛗ ᚨ ᚱ ᛗ ᛟ ✦</div>
+          <div class="site-sub">a personal web sanctuary · since the year of the dragon</div>
+        </div>
+        <div class="header-side">
+          <svg viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="22" y="4" width="10" height="46" fill="none" stroke="#2a1e08" stroke-width="1.2" rx="1"/>
+            <rect x="8" y="18" width="38" height="6" fill="none" stroke="#2a1e08" stroke-width="1.2" rx="1"/>
+            <circle cx="27" cy="21" r="4" fill="none" stroke="#3d2800" stroke-width="1"/>
+            <line x1="27" y1="6" x2="27" y2="16" stroke="#1e1408" stroke-width="1"/>
+            <polygon points="22,4 32,4 27,2" fill="#2a1e08"/>
+          </svg>
+          <div class="header-time layer-note">layer : present</div>
+        </div>
+        <div class="header-ornament"></div>
+      </div>
 
-  <script src="js/app.js"></script>
+      <div class="border-strip"></div>
+
+      <div class="nav-bar">
+        <a class="active" href="#" data-view="home">home</a>
+        <a href="#" data-view="blog">chronicle</a>
+        <a href="#" data-view="about">the wanderer</a>
+        <a href="#" data-view="shrine">shrine</a>
+        <a href="#">gallery</a>
+        <a href="#">guestbook</a>
+        <a href="#">links</a>
+      </div>
+
+      <div class="three-col">
+        <div class="left-col">
+          <div class="panel">
+            <div class="panel-title">Navigation</div>
+            <div class="panel-body">
+              <ul class="nav-links">
+                <li><a class="active" href="#" data-view="home">home</a></li>
+                <li><a href="#" data-view="blog">chronicle</a></li>
+                <li><a href="#" data-view="about">the wanderer</a></li>
+                <li><a href="#" data-view="shrine">shrine</a></li>
+                <li><a href="#">gallery</a></li>
+                <li><a href="#">guestbook</a></li>
+                <li><a href="#">links</a></li>
+                <li><a href="#">resources</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-title">Current Status</div>
+            <div class="panel-body">
+              <div class="lore-text">
+                "wandering between the wired and the waking world. rewatching lodoss again. always."
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-title">Scroll Log</div>
+            <div class="panel-body">
+              <div class="changelog-item"><b>III.XXI</b> new layout, dark age</div>
+              <div class="changelog-item"><b>III.XIV</b> shrine page added</div>
+              <div class="changelog-item"><b>III.IX</b> guestbook opened</div>
+              <div class="changelog-item"><b>II.XXVIII</b> the gate opens</div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-title">Webrings</div>
+            <div class="panel-body">
+              <div class="webring-stack">
+                <div class="lbtn">old web circle</div>
+                <div class="lbtn">anime shrine ring</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="center-col">
+          <div class="content-topbar">
+            <div class="dot"></div>
+            <div class="content-topbar-title" id="clabel">Home · The Sanctuary</div>
+          </div>
+          <div class="content-inner">
+            <div class="view active" id="v-home">
+              <div class="scroll-heading">Welcome, Traveller</div>
+              <p class="prose drop-cap">
+                You have found your way to this quiet corner of the Wired — a sanctuary built by hand, in notepad, during the long hours when the rest of the world was sleeping. <em>I am glad you are here.</em>
+              </p>
+              <p class="prose">
+                This place is devoted to the things that have lived in my heart longest: the cursed island of Lodoss, the digital ghost of Lain, old animation that moves like it was made by people who believed in what they were drawing. If any of that means something to you, stay a while.
+              </p>
+              <div class="divider">— ⚔ ✦ ⚔ —</div>
+              <p class="prose">
+                I coded this myself. It has mistakes in it. The code is a mess. That is fine — <em>all living things are a little broken</em>, and this website is alive in its own small way.
+              </p>
+
+              <div class="stamp-row">
+                <span class="stamp lit">lodoss war devotee</span>
+                <span class="stamp">best viewed in firefox</span>
+                <span class="stamp lit">wired: connected</span>
+                <span class="stamp">no hotlinking</span>
+                <span class="stamp lit">made in notepad</span>
+                <span class="stamp">old web forever</span>
+                <span class="stamp lit">lain is real</span>
+                <span class="stamp">pirotess deserved better</span>
+              </div>
+
+              <div class="about-grid">
+                <div>
+                  <div class="about-col-title">The Wanderer</div>
+                  <div class="about-row"><b>name ·</b> called ashara here</div>
+                  <div class="about-row"><b>age ·</b> unknown</div>
+                  <div class="about-row"><b>sign ·</b> scorpio ♏</div>
+                  <div class="about-row"><b>realm ·</b> somewhere cold</div>
+                  <div class="about-row"><b>navi ·</b> always on</div>
+                </div>
+                <div>
+                  <div class="about-col-title">Current Obsessions</div>
+                  <div class="about-row"><b>watching ·</b> lodoss, SEL, berserk</div>
+                  <div class="about-row"><b>reading ·</b> the silmarillion</div>
+                  <div class="about-row"><b>music ·</b> yoko kanno, bôa</div>
+                  <div class="about-row"><b>playing ·</b> nothing. staring.</div>
+                  <div class="about-row"><b>mood ·</b> autumnal</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="view" id="v-blog">
+              <div class="scroll-heading">The Chronicle</div>
+              <div id="chronicle-posts">
+                <p class="prose" id="chronicle-status">Consulting the archives…</p>
+              </div>
+            </div>
+
+            <div class="view" id="v-about">
+              <div class="scroll-heading">The Wanderer</div>
+              <p class="prose drop-cap">
+                I go by Ashara here. I have been on the internet since I was very small, which means I remember when websites were places people actually lived in. <em>This is my attempt to have one of those again.</em>
+              </p>
+              <p class="prose">
+                I am drawn to things that are old, or that feel old: hand-drawn animation, fantasy novels with maps inside the cover, the particular quiet of a computer at three in the morning. Record of Lodoss War found me at the right age and never really left.
+              </p>
+              <div class="divider">— ✦ —</div>
+              <div class="about-grid">
+                <div>
+                  <div class="about-col-title">Currently Watching</div>
+                  <div class="about-row">record of lodoss war</div>
+                  <div class="about-row">serial experiments lain</div>
+                  <div class="about-row">berserk (1997)</div>
+                  <div class="about-row">haibane renmei</div>
+                  <div class="about-row">.hack//sign</div>
+                </div>
+                <div>
+                  <div class="about-col-title">Currently Hearing</div>
+                  <div class="about-row">yoko kanno</div>
+                  <div class="about-row">bôa — duvet</div>
+                  <div class="about-row">susumu hirasawa</div>
+                  <div class="about-row">dead can dance</div>
+                  <div class="about-row">cocteau twins</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="view" id="v-shrine">
+              <div class="scroll-heading">Shrine · Pirotess of Marmo</div>
+              <p class="prose drop-cap">
+                <em>Dark elf. Shadow of Ashram. The most faithful figure in a story full of faithless people.</em> This shrine exists because Pirotess deserves one — because loyalty written this quietly is rare in any medium.
+              </p>
+              <div class="divider">— ⚔ —</div>
+              <p class="prose">
+                She appears without announcement and leaves the same way. The animation gives her just enough frames to be real. Her eyes are the colour of deep water. When Ashram falls, she is there. When he rises, she is also there. The series does not explain this. <em>It does not need to.</em>
+              </p>
+              <p class="prose">
+                What I love most: she is never rescued. She is never waiting. She simply walks alongside, as an equal who has chosen a direction and follows it to its end. That is a complete character. The OVA understood something.
+              </p>
+              <div class="divider">— ✦ ⚔ ✦ —</div>
+              <div class="about-grid">
+                <div>
+                  <div class="about-col-title">Character</div>
+                  <div class="about-row"><b>name ·</b> Pirotess</div>
+                  <div class="about-row"><b>race ·</b> dark elf</div>
+                  <div class="about-row"><b>realm ·</b> Marmo, Dark Island</div>
+                  <div class="about-row"><b>allegiance ·</b> Ashram</div>
+                  <div class="about-row"><b>first appearance ·</b> ep. 9</div>
+                </div>
+                <div>
+                  <div class="about-col-title">Why She Matters</div>
+                  <div class="about-row">loyalty without servitude</div>
+                  <div class="about-row">competence without display</div>
+                  <div class="about-row">grief handled with silence</div>
+                  <div class="about-row">the OVA's moral centre</div>
+                  <div class="about-row">deserved a full series</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-col">
+          <div class="np-box">
+            <div class="np-label">♪ now playing</div>
+            <span class="np-song">Adesso e Fortuna — Record of Lodoss War OST</span>
+            <div class="np-bar"><div class="np-fill"></div></div>
+          </div>
+
+          <div class="counter-box">
+            travellers received
+            <span class="counter-digits">007741</span>
+            since the gate opened
+          </div>
+
+          <div class="sb">
+            <div class="sb-title">Style</div>
+            <div class="sb-body">
+              <button class="theme-btn" id="theme-toggle" type="button">switch theme</button>
+            </div>
+          </div>
+
+          <div class="sb">
+            <div class="sb-title">Mood Scroll</div>
+            <div class="sb-body">
+              <b>feeling ·</b> autumnal<br>
+              <b>weather ·</b> cold rain<br>
+              <b>layer ·</b> VII of XIII<br>
+              <b>navi ·</b> on, always<br>
+              <b>candle ·</b> <span class="blink">lit</span>
+            </div>
+          </div>
+
+          <a href="#" class="guestbook-link">✦ sign the guestbook ✦</a>
+
+          <div class="sb">
+            <div class="sb-title">Buttons</div>
+            <div class="sb-body">
+              <div class="link-btns">
+                <a href="#" class="lbtn" data-view="blog">the chronicle</a>
+                <a href="#" class="lbtn">✦ lodoss ✦</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="sb">
+            <div class="sb-title">Find Me</div>
+            <div class="sb-body">
+              <a href="#">myanimelist</a>
+              <a href="#">last.fm</a>
+              <a href="#">goodreads</a>
+            </div>
+          </div>
+
+          <div class="sb">
+            <div class="sb-title">Currently</div>
+            <div class="sb-body">
+              <b>ep ·</b> lodoss OVA #9<br>
+              <b>track ·</b> adesso e fortuna<br>
+              <b>reading ·</b> silmarillion<br>
+              <b>eating ·</b> nothing, forgot
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-strip">
+        <span class="footer-inner">
+          ✦ the cursed island endures ✦ &nbsp;&nbsp; present day · present time · &nbsp;&nbsp; ✦ pirotess of marmo · dark elf · faithful · &nbsp;&nbsp; no hotlinking · made in notepad · &nbsp;&nbsp; ✦ the wired is real · lain is everywhere · &nbsp;&nbsp; best viewed in firefox · &nbsp;&nbsp; ✦ the cursed island endures ✦ &nbsp;&nbsp; sign the guestbook · &nbsp;&nbsp;
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sword-cursor" id="swordCursor" aria-hidden="true">
+    <svg viewBox="0 0 24 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M12 0.5 L14 15 L12 18.5 L10 15 Z" fill="#f0d880" stroke="#8a6830" stroke-width="0.4"/>
+      <path d="M11 2 L12 13 L13 2 Z" fill="#fff8d0" opacity="0.35"/>
+      <rect x="8.5" y="16" width="7" height="3" fill="#8a6830" stroke="#4a3818" stroke-width="0.4"/>
+      <rect x="10" y="19" width="4" height="8" fill="#3a2818" stroke="#2a1810" stroke-width="0.4"/>
+      <circle cx="12" cy="28.5" r="2.6" fill="#d4b060" stroke="#8a6830" stroke-width="0.5"/>
+    </svg>
+  </div>
+
+  <script src="js/supabase-config.js"></script>
+  <script src="js/space-bg.js"></script>
+  <script src="js/app.js" defer></script>
 </body>
 </html>
